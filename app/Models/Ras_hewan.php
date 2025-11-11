@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Ras_hewan extends Model
+{
+    protected $table = 'ras_hewan';
+    protected $primaryKey = 'idras_hewan';
+    protected $fillable = [
+        'nama_ras',
+        'idjenis_hewan',
+    ];
+    public function jenisHewan()
+    {
+        return $this->belongsTo(Jenis_hewan::class, 'idjenis_hewan', 'idjenis_hewan');
+    }
+    public function pets()
+    {
+        return $this->hasMany(Pet::class, 'idras_hewan', 'idras_hewan');
+    }
+}
