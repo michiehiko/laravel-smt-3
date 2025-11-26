@@ -27,9 +27,9 @@
                     Struktur
                 </a>
                 </a>
-                {{-- <a href="{{ route('') }}" class="px-6 py-2 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                    Struktur
-                </a> --}}
+                <a href="{{ route('login') }}" class="px-6 py-2 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                    Login
+                </a> 
             </div>
         </div>
     </nav>

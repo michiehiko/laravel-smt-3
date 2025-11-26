@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+< lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +57,7 @@
         </div>
 
         <!-- Feature Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
             <!-- Menu 1: Data User -->
             <div class="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-blue-900">
                 <div class="text-center">
@@ -249,33 +249,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-6 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-lg">&copy; 2025 RSHP Universitas Airlangga. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>Manajemen pengguna</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-                        <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>Info akun lengkap</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-600">
-                        <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>Status aktivasi user</span>
-                    </div>
-                </div>
-            </div>
-
+    <div>
             <!-- Menu 2: Manajemen Role -->
             <div class="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-green-600">
                 <div class="text-center">
@@ -454,4 +428,19 @@
                     </div>
                     <div class="flex items-center gap-2 text-sm text-gray-600">
                         <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Jadwal praktek</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">&copy; 2025 RSHP Universitas Airlangga. All rights reserved.</p>
+        </div>
+    </footer>
+</body>

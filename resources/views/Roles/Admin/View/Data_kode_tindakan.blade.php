@@ -68,14 +68,14 @@
                     <tr>
                         <th class="px-6 py-4 font-bold text-lg text-left w-20">No</th>
                         <th class="px-6 py-4 font-bold text-lg text-left">Kode</th>
-                        <th class="px-6 py-4 font-bold text-lg text-left">Nama Tindakan</th>
+                        <th class="px-6 py-4 font-bold text-lg text-left">Deskripsi Tindakan</th>
                         <th class="px-6 py-4 font-bold text-lg text-left">Kategori Klinis</th>
                         <th class="px-6 py-4 font-bold text-lg text-center">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody class="divide-y divide-gray-200">
-                    @forelse($kode_tindakan_terapis as $i => $t)
+                    @forelse($kode_tindakan as $i => $t)
                     <tr class="hover:bg-blue-50 transition-colors duration-200">
                         <td class="px-6 py-5 font-semibold text-blue-900">{{ $i + 1 }}</td>
                         <td class="px-6 py-5">
@@ -86,7 +86,7 @@
                                 {{ $t->kode }}
                             </span>
                         </td>
-                        <td class="px-6 py-5 font-medium text-gray-800">{{ $t->deskripsi_tindakan_terapi }}</td>
+                        <td class="px-6 py-5 font-medium text-gray-800">{{ $t->deskripsi_tindakan_terapi}}</td>
                         <td class="px-6 py-5 text-gray-700">{{ $t->kategoriKlinis->nama_kategori_klinis ?? '-' }}</td>
                         <td class="px-6 py-5 text-center">
                             <div class="flex justify-center gap-2">
