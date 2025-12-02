@@ -14,8 +14,8 @@
     <div class="container mx-auto px-4 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
             <div class="bg-amber-500 rounded-full p-2">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="darkblue" class="bi bi-hearts" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.931.481c1.627-1.671 5.692 1.254 0 5.015-5.692-3.76-1.626-6.686 0-5.015m6.84 1.794c1.084-1.114 3.795.836 0 3.343-3.795-2.507-1.084-4.457 0-3.343M7.84 7.642c2.71-2.786 9.486 2.09 0 8.358-9.487-6.268-2.71-11.144 0-8.358"/>
                 </svg>
             </div>
             <span class="font-bold text-xl text-white">Menu Data Hewan</span>
@@ -25,9 +25,19 @@
             <span class="text-blue-100">
                 Halo, <span class="font-semibold text-white">{{ Auth::user()->nama ?? 'Admin' }}</span>
             </span>
-            <button class="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+        </div>
+
+        <!-- Logout -->
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                class="px-4 py-2 bg-yellow-600 hover:bg-red-700 text-white rounded-lg shadow-md transition">
                 Logout
-            </button>
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                @csrf
+            </form>
         </div>
     </div>
 </nav>
@@ -39,8 +49,8 @@
         <div class="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 rounded-t-2xl shadow-xl p-6">
             <h2 class="text-3xl font-bold text-blue-900 flex items-center gap-3">
                 <div class="bg-white rounded-full p-3">
-                    <svg class="w-8 h-8 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="darkblue" class="bi bi-hearts" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.931.481c1.627-1.671 5.692 1.254 0 5.015-5.692-3.76-1.626-6.686 0-5.015m6.84 1.794c1.084-1.114 3.795.836 0 3.343-3.795-2.507-1.084-4.457 0-3.343M7.84 7.642c2.71-2.786 9.486 2.09 0 8.358-9.487-6.268-2.71-11.144 0-8.358"/>
                     </svg>
                 </div>
                 <span>Data Hewan</span>
@@ -161,12 +171,12 @@
 
     <!-- Tombol Kembali -->
     <div class="mt-8">
-        <a href="{{ route('roles.admin.data_master') }}"
+        <a href="{{ route('data_master') }}"
             class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            <span>Kembali ke Dashboard</span>
+            <span>Kembali ke Data Master</span>
         </a>
     </div>
 

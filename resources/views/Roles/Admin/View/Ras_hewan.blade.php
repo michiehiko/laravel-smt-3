@@ -25,10 +25,19 @@
             <span class="text-blue-100">Halo, 
                 <span class="font-semibold text-white">{{ Auth::user()->nama ?? 'Admin' }}</span>
             </span>
-            {{-- <a href="{{ route('logout') }}" --}}
-                class="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+        </div>
+
+                <!-- Logout -->
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                class="px-4 py-2 bg-yellow-600 hover:bg-red-700 text-white rounded-lg shadow-md transition">
                 Logout
-            </a>
+           </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                @csrf
+            </form>
         </div>
     </div>
 </nav>
@@ -74,6 +83,22 @@
                     </tr>
                 </thead>
 
+            @php
+                function jenisIcon($nama) {
+                    $nama = strtolower($nama);
+
+                    if (str_contains($nama, 'anjing')) return '🐶';
+                    if (str_contains($nama, 'kucing')) return '🐱';
+                    if (str_contains($nama, 'kelinci')) return '🐰';
+                    if (str_contains($nama, 'burung')) return '🐦';
+                    if (str_contains($nama, 'reptil')) return '🦎';
+                    if (str_contains($nama, 'rodent / hewan kecil')) return '🐹';
+
+                    return '🐾'; // default
+                }
+            @endphp
+
+
                 <tbody class="divide-y divide-gray-200">
                     @forelse($rasHewans as $i => $r)
                     <tr class="hover:bg-blue-50 transition-colors duration-200">
@@ -81,10 +106,8 @@
                         <td class="px-6 py-5 font-medium text-gray-800">{{ $r->nama_ras }}</td>
                         <td class="px-6 py-5 text-gray-700">
                             <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd"></path>
-                                </svg>
-                                {{ $r->jenishewan->nama_jenis_hewan ?? '-'}}
+                                {!! jenisIcon($r->jenishewan->nama_jenis_hewan) !!}
+                                {{ $r->jenishewan->nama_jenis_hewan }}
                             </span>
                         </td>
                         <td class="px-6 py-5 text-center">
@@ -138,12 +161,12 @@
 
     <!-- Tombol Kembali -->
     <div class="mt-8">
-        <a href="{{ route('roles.admin.data_master') }}"
+        <a href="{{ route('data_master') }}"
             class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            <span>Kembali ke Dashboard</span>
+            <span>Kembali ke Data Master</span>
         </a>
     </div>
 

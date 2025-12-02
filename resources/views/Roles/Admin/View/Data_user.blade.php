@@ -19,17 +19,26 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
                 </div>
-                <span class="font-bold text-xl text-white">Menu Manajemen User</span>
+                    <span class="font-bold text-xl text-white">Menu Manajemen User</span>
             </div>
 
             <div class="flex items-center gap-4">
                 <span class="text-blue-100">Halo,
                     <span class="font-semibold text-white">{{ Auth::user()->nama ?? 'Admin' }}</span>
                 </span>
-                {{-- <a href="{{ route('logout') }}" --}}
-                    class="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+            </div>
+
+            <!-- Logout -->
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="px-4 py-2 bg-yellow-600 hover:bg-red-700 text-white rounded-lg shadow-md transition">
                     Logout
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
             </div>
         </div>
     </nav>
@@ -160,12 +169,12 @@
 
         <!-- Tombol Kembali -->
         <div class="mt-8">
-            {{-- <a href="{{ route('admin.roles.dashboard') }}" --}}
+            <a href="{{ route('data_master') }}" 
                 class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                 </svg>
-                <span>Kembali ke Dashboard</span>
+                <span>Kembali ke Data Master</span>
             </a>
         </div>
     </main>

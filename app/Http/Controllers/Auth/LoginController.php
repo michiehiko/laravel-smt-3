@@ -52,7 +52,7 @@ class LoginController extends Controller
             return back()->with('error', 'Role user tidak aktif!');
         }
         $namaRole = Role::find($roleActive->idrole);
-
+        
         Auth::login($user);
         $request->session()->put([
             'user_id'         => $user->iduser,
@@ -64,12 +64,13 @@ class LoginController extends Controller
         ]);
 
         $userRole = (string)$roleActive->idrole;
+        // var_dump($userRole); die();
         switch ($userRole) {
-            case '1': return redirect()->route('Dashboard_admin')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '2': return redirect()->route('Dashboard_Dokter')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '3': return redirect()->route('Dashboard_Perawat')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '4': return redirect()->route('dashboard_Resepsionis')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
-            case '5': return redirect()->route('Dashboard_Pemilik')->with("Sukses Bolooo", "Akses sak penak e ae cahh");
+            case '1': return redirect()->route('Dashboard_admin')->with("Login Success", "Full Akses Data Master");
+            case '2': return redirect()->route('Dashboard_dokter')->with("Login Success", "Akses pada data yang tersedia");
+            case '3': return redirect()->route('Dashboard_perawat')->with("Login Success", "Akses pada data yang tersedia");
+            case '4': return redirect()->route('Dashboard_resepsionis')->with("Login Success", "Akses pada data yang tersedia");
+            case '5': return redirect()->route('Dashboard_pemilik')->with("Login Success", "Akses pada data yang tersedia");
         }
 
         return redirect('/home')->with('success', 'Login berhasil!');

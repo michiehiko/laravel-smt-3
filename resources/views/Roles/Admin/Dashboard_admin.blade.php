@@ -19,13 +19,18 @@
                 </div>
                 <span class="font-bold text-xl text-white">Dashboard Admin</span>
             </div>
-            
-            <!-- User Info & Logout -->
-            <div class="flex items-center gap-4">
-                <span class="text-blue-100">Halo, <span class="font-semibold text-white">Admin</span></span>
-                <a href="../../Views/Logout.php" class="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+
+                    <!-- Logout -->
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="px-4 py-2 bg-yellow-600 hover:bg-red-700 text-white rounded-lg shadow-md transition">
                     Logout
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
             </div>
         </div>
     </nav>
@@ -36,8 +41,8 @@
         <div class="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 rounded-2xl shadow-2xl p-8 mb-8">
             <div class="flex items-center gap-4">
                 <div class="bg-white rounded-full p-4">
-                    <svg class="w-12 h-12 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" width= "50" height= "50" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
+                        <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
                     </svg>
                 </div>
                 <div>
@@ -59,7 +64,7 @@
                     </div>
                     <div class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-sm font-semibold">Users</div>
                 </div>
-                <h3 class="text-3xl font-bold text-gray-800 mb-1">247</h3>
+                <h3 class="text-3xl font-bold text-gray-800 mb-1">12</h3>
                 <p class="text-gray-600 text-sm">Total Pengguna</p>
             </div>
 
@@ -67,8 +72,8 @@
             <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-t-4 border-green-500">
                 <div class="flex items-center justify-between mb-4">
                     <div class="bg-green-100 p-3 rounded-full">
-                        <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" stroke="green" class="bi bi-bluesky" viewBox="0 0 16 16">
+                            <path d="M3.468 1.948C5.303 3.325 7.276 6.118 8 7.616c.725-1.498 2.698-4.29 4.532-5.668C13.855.955 16 .186 16 2.632c0 .489-.28 4.105-.444 4.692-.572 2.04-2.653 2.561-4.504 2.246 3.236.551 4.06 2.375 2.281 4.2-3.376 3.464-4.852-.87-5.23-1.98-.07-.204-.103-.3-.103-.218 0-.081-.033.014-.102.218-.379 1.11-1.855 5.444-5.231 1.98-1.778-1.825-.955-3.65 2.28-4.2-1.85.315-3.932-.205-4.503-2.246C.28 6.737 0 3.12 0 2.632 0 .186 2.145.955 3.468 1.948"/>
                         </svg>
                     </div>
                     <div class="bg-green-100 text-green-900 px-3 py-1 rounded-full text-sm font-semibold">Pets</div>
@@ -124,7 +129,7 @@
                     </div>
                     <h2 class="text-2xl font-bold text-blue-900 mb-3">Data Master</h2>
                     <p class="text-gray-600 mb-6 leading-relaxed">Kelola data master sistem seperti pengguna, hewan, dan dokter.</p>
-                    <a href="{{route('roles.admin.data_master')}}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    <a href="{{route('data_master')}}" class="inline-block bg-blue-900 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                         Kelola Data Master
                     </a>
                 </div>

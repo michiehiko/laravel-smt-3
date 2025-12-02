@@ -22,7 +22,9 @@ class isAdministrator
         }
 
         $userRole = session('user_role');
-        if ($userRole !== 1) {
+
+        // Cast to int sebelum dibandingkan
+        if ((int) $userRole !== 1) {
             return back()->with('error', 'Anda tidak memiliki akses administrator.');
         }
 
