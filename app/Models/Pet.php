@@ -9,6 +9,7 @@ class Pet extends Model
 {
     protected $table = 'pet';
     protected $primaryKey = 'idpet';
+    public $timestamps = false;
     protected $fillable = [
         'nama',
         'tanggal_lahir',

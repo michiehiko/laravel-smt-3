@@ -8,6 +8,8 @@ class Temu_dokter extends Model
 {
     protected $table = 'temu_dokter';
     protected $primaryKey = 'idreservasi_dokter';
+    public $timestamps = false;
+
     protected $fillable = [
         'no_urut',
         'waktu_daftar',

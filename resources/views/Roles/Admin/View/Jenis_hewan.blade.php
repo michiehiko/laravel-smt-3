@@ -62,7 +62,7 @@
 
     <!-- Tombol Tambah -->
     <div class="mb-6">
-        {{-- <a href="{{ route('jenis.create') }}" --}}
+        <a href="{{ route('create_jenis_hewan') }}" 
             class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -92,7 +92,7 @@
                             <div class="flex items-center justify-center gap-2">
 
                                 {{-- Edit --}}
-                                {{-- <a href="{{ route('jenis.edit', $j->idjenis_hewan) }}" --}}
+                                <a href="{{ route('edit_jenis_hewan', $j->idjenis_hewan) }}" 
                                     class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -101,7 +101,7 @@
                                 </a>
 
                                 {{-- Delete --}}
-                                {{-- <form action="{{ route('jenis.destroy', $j->idjenis_hewan) }}" method="POST" --}}
+                                <form action="{{ route('hapus_jenis_hewan', $j->idjenis_hewan) }}" method="POST" 
                                     onsubmit="return confirm('Hapus jenis {{ $j->nama_jenis_hewan }}?')"
                                     class="inline">
                                     @csrf

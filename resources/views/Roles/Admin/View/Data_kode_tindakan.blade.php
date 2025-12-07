@@ -9,7 +9,6 @@
 
 <body class="bg-gradient-to-br from-blue-50 to-amber-50 min-h-screen flex flex-col">
 
-<!-- Navbar -->
 <nav class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 shadow-lg sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
@@ -27,13 +26,12 @@
             </span>
         </div>
 
-        <!-- Logout -->
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a href="{{ route('logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                 class="px-4 py-2 bg-yellow-600 hover:bg-red-700 text-white rounded-lg shadow-md transition">
                 Logout
-           </a>
+            </a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                 @csrf
@@ -44,7 +42,6 @@
 
 <main class="flex-grow container mx-auto px-4 py-12">
 
-    <!-- Header -->
     <div class="mb-8">
         <div class="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 rounded-t-2xl shadow-xl p-6">
             <h2 class="text-3xl font-bold text-blue-900 flex items-center gap-3">
@@ -59,9 +56,8 @@
         </div>
     </div>
 
-    <!-- Tombol Tambah -->
     <div class="mb-6">
-        {{-- <a href="{{ route('kode_tindakan.create') }}" --}}
+        <a href="{{ route('create_kode_tindakan') }}" 
             class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -70,7 +66,6 @@
         </a>
     </div>
 
-    <!-- Tabel -->
     <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full">
@@ -79,13 +74,16 @@
                         <th class="px-6 py-4 font-bold text-lg text-left w-20">No</th>
                         <th class="px-6 py-4 font-bold text-lg text-left">Kode</th>
                         <th class="px-6 py-4 font-bold text-lg text-left">Deskripsi Tindakan</th>
+                        
+                        <th class="px-6 py-4 font-bold text-lg text-left">Kategori</th>
+                        
                         <th class="px-6 py-4 font-bold text-lg text-left">Kategori Klinis</th>
                         <th class="px-6 py-4 font-bold text-lg text-center">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody class="divide-y divide-gray-200">
-                    @forelse($kode_tindakan as $i => $t)
+                    @forelse($kode_tindakan as $i => $kodeTindakan)
                     <tr class="hover:bg-blue-50 transition-colors duration-200">
                         <td class="px-6 py-5 font-semibold text-blue-900">{{ $i + 1 }}</td>
                         <td class="px-6 py-5">
@@ -93,15 +91,22 @@
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
                                 </svg>
-                                {{ $t->kode }}
+                                {{ $kodeTindakan->kode }}
                             </span>
                         </td>
-                        <td class="px-6 py-5 font-medium text-gray-800">{{ $t->deskripsi_tindakan_terapi}}</td>
-                        <td class="px-6 py-5 text-gray-700">{{ $t->kategoriKlinis->nama_kategori_klinis ?? '-' }}</td>
+                        <td class="px-6 py-5 font-medium text-gray-800">{{ $kodeTindakan->deskripsi_tindakan_terapi}}</td>
+                        
+                        <td class="px-6 py-5 text-gray-700">
+                            {{ $kodeTindakan->kategori->nama_kategori ?? '-' }}
+                        </td>
+
+                        <td class="px-6 py-5 text-gray-700">{{ $kodeTindakan->kategoriKlinis->nama_kategori_klinis ?? '-' }}</td>
+                        
                         <td class="px-6 py-5 text-center">
                             <div class="flex justify-center gap-2">
+
                                 {{-- Edit --}}
-                                {{-- <a href="{{ route('kode_tindakan.edit', $t->idkode_tindakan) }}" --}}
+                                <a href="{{ route('edit_kode_tindakan', $kodeTindakan->idkode_tindakan_terapi) }}" 
                                     class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -110,8 +115,8 @@
                                 </a>
 
                                 {{-- Delete --}}
-                                {{-- <form action="{{ route('kode_tindakan.destroy', $t->idkode_tindakan) }}" method="POST" --}}
-                                    onsubmit="return confirm('Hapus tindakan {{ $t->nama_tindakan }}?')">
+                                <form action="{{ route('hapus_kode_tindakan', $kodeTindakan->idkode_tindakan_terapi) }}" method="POST" 
+                                    onsubmit="return confirm('Hapus tindakan {{ $kodeTindakan->nama_tindakan }}?')">
                                     @csrf @method('DELETE')
                                     <button class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -125,8 +130,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="px-6 py-16 text-center">
-                            <div class="flex flex-col items-center justify-center">
+                        <td colspan="7" class="px-6 py-16 text-center"> <div class="flex flex-col items-center justify-center">
                                 <div class="bg-gray-100 rounded-full p-8 mb-4">
                                     <svg class="w-20 h-20 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
@@ -144,7 +148,6 @@
         </div>
     </div>
 
-    <!-- Kembali -->
     <div class="mt-8">
         <a href="{{ route('data_master') }}" class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

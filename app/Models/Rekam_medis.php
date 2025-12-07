@@ -9,6 +9,8 @@ class Rekam_medis extends Model
 {
     protected $table = 'rekam_medis';
     protected $primaryKey = 'idrekam_medis';
+    public $timestamps = false;
+
     protected $fillable = [
         'idreservasi_dokter',
         'created_at',

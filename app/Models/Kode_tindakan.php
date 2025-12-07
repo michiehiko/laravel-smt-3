@@ -8,6 +8,8 @@ class Kode_tindakan extends Model
 {
     protected $table = 'kode_tindakan_terapi';
     protected $primaryKey = 'idkode_tindakan_terapi';
+    public $timestamps = false;
+
     protected $fillable = [
         'kode',
         'deskripsi_tindakan_terapi',

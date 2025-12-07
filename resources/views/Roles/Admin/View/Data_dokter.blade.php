@@ -62,7 +62,7 @@
 
     <!-- Tombol Tambah Dokter -->
     <div class="mb-6">
-        {{-- <a href="{{ route('dokter.create') }}" --}}
+        <a href="{{ route('create_dokter') }}" 
             class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -113,8 +113,32 @@
                         <td class="px-6 py-5 text-center">
                             <div class="flex items-center justify-center gap-2">
 
+                                {{-- 1. TOMBOL UBAH STATUS (BARU) --}}
+                                <form action="{{ route('update_status_dokter', $d->idrole_user) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    
+                                    @if($d->status == 1)
+                                        {{-- Kalau Aktif, Tampilkan Tombol Nonaktifkan (Icon Power Off) --}}
+                                        <button type="submit" title="Nonaktifkan Dokter"
+                                            class="inline-flex items-center justify-center w-8 h-8 bg-gray-500 hover:bg-gray-600 text-white rounded-lg shadow transition-all duration-300 transform hover:scale-110">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                                            </svg>
+                                        </button>
+                                    @else
+                                        {{-- Kalau Nonaktif, Tampilkan Tombol Aktifkan (Icon Check/Power On) --}}
+                                        <button type="submit" title="Aktifkan Dokter"
+                                            class="inline-flex items-center justify-center w-8 h-8 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow transition-all duration-300 transform hover:scale-110">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                        </button>
+                                    @endif
+                                </form>
+                                
                                 {{-- Edit --}}
-                                {{-- <a href="{{ route('dokter.edit', $d->idrole_user) }}" --}}
+                                <a href="{{ route('edit_dokter', $d->idrole_user) }}" 
                                     class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -123,11 +147,10 @@
                                 </a>
 
                                 {{-- Hapus --}}
-                                {{-- <form action="{{ route('dokter.destroy', $d->idrole_user) }}" method="POST" --}}
-                                    onsubmit="return confirm('Hapus dokter {{ $d->user->nama }}?')"
-                                    class="inline">
+                                <form action="{{ route('hapus_dokter', $d->idrole_user) }}" method="POST" 
+                                    onsubmit="return confirm('Yakin hapus?')">
                                     @csrf
-                                    @method('DELETE')
+                                    @method('DELETE') <button type="submit"></button>
                                     <button type="submit"
                                         class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -9,6 +9,8 @@ class Pemilik extends Model
 {
     protected $table = 'pemilik';
     protected $primaryKey = 'idpemilik';
+    public $timestamps = false;
+
     protected $fillable = [
         'no_wa',
         'alamat',

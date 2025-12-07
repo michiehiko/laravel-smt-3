@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Kode Tindakan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-amber-50 min-h-screen">
+    <nav class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-amber-500 rounded-full p-2">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <span class="font-bold text-xl text-white">Tambah Kode Tindakan</span>
+            </div>
+            <a href="{{ route('data_kode_tindakan') }}" class="text-white hover:text-amber-300 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
+            <h1 class="text-3xl font-bold text-blue-900 mb-8 flex items-center gap-3">
+                <div class="bg-red-100 p-3 rounded-full">
+                    <svg class="w-8 h-8 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </div>
+                Form Tambah Kode Tindakan
+            </h1>
+
+            <form action="{{ route('tambah_kode_tindakan') }}" method="POST">
+                @csrf
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Kode</label>
+                    <input type="text" name="kode" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition" placeholder="Contoh: T01" maxlength="5" required>
+                    @error('kode')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Deskripsi Tindakan/Terapi</label>
+                    <textarea name="deskripsi_tindakan_terapi" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition" placeholder="Masukkan deskripsi" required></textarea>
+                    @error('deskripsi_tindakan_terapi')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Kategori</label>
+                    <select name="idkategori" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        @foreach($kategoris as $kategori)
+                        <option value="{{ $kategori->idkategori }}">{{ $kategori->nama_kategori }}</option>
+                        @endforeach
+                    </select>
+                    @error('idkategori')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-8">
+                    <label class="block text-gray-700 font-semibold mb-2">Kategori Klinis</label>
+                    <select name="idkategori_klinis" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition" required>
+                        <option value="">-- Pilih Kategori Klinis --</option>
+                        @foreach($kategoriKlinis as $kk)
+                        <option value="{{ $kk->idkategori_klinis }}">{{ $kk->nama_kategori_klinis }}</option>
+                        @endforeach
+                    </select>
+                    @error('idkategori_klinis')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="flex gap-4">
+                    <button type="submit" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        Simpan Data
+                    </button>
+                    <a href="{{ route('data_kode_tindakan') }}" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 text-center">
+                        Batal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

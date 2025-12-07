@@ -63,15 +63,15 @@
         </div>
 
         <!-- Tombol Tambah Role -->
-        {{-- <div class="mb-6">
-            <a href="{{ route('roles.create') }}"
+        <div class="mb-6">
+            <a href="{{ route('create_role') }}"
                 class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
                 <span>Tambah Role Baru</span>
             </a>
-        </div> --}}
+        </div> 
 
         <!-- Card Tabel -->
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
@@ -129,7 +129,18 @@
                                     </td>
                                     <td class="px-6 py-5 text-center">
                                         <div class="flex justify-center gap-2">
-                                            {{-- <form action="{{ route('roles.toggle', $role->pivot->idrole_user) }}"
+
+                                            {{-- Edit --}}
+                                            <a href="{{ route('edit_role', $role->pivot->idrole_user) }}"
+                                                class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg shadow transition-all duration-300 transform hover:scale-105">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                                </svg>
+                                                Edit
+                                            </a>
+                                            
+                                             {{-- Status --}}
+                                            <form action="{{ route('status_role', $role->pivot->idrole_user) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('PATCH')
@@ -147,9 +158,10 @@
                                                     @endif
                                                     {{ $role->pivot->status ? 'Nonaktifkan' : 'Aktifkan' }}
                                                 </button>
-                                            </form> --}}
+                                            </form> 
 
-                                            {{-- <form action="{{ route('roles.delete', $role->pivot->idrole_user) }}"
+                                            {{-- Hapus --}}
+                                            <form action="{{ route('hapus_role', $role->pivot->idrole_user) }}"
                                                 method="POST"
                                                 onsubmit="return confirm('Hapus role ini dari {{ $user->nama }}?')">
                                                 @csrf
@@ -161,7 +173,7 @@
                                                     </svg>
                                                     Hapus
                                                 </button>
-                                            </form> --}}
+                                            </form> 
                                         </div>
                                     </td>
                                 </tr>
@@ -205,7 +217,5 @@
             <p class="text-lg">&copy; 2025 RSHP Universitas Airlangga. All rights reserved.</p>
         </div>
     </footer>
-
 </body>
-
 </html>
